@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas anatomije - Živčani sustav</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+         <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+    <i class="fas fa-brain"></i>
+    <h1>BodyLab</h1>
+</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-login"><i class="fas fa-sign-in-alt"></i> Prijava</button>
+                <button class="btn btn-register"><i class="fas fa-user-plus"></i> Registracija</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-title">
+            <h2>Detaljna 3D Anatomija Ljudskog Tijela - Živčani Sustav</h2>
+            <p>Interaktivni realistični model živčanog sustava s potpunim anatomskim detaljima. Kliknite na strukturu ili odaberite iz izbornika za detaljne informacije.</p>
+        </div>
+
+        <div class="content-wrapper">
+            <section class="model-section">
+                <h3><i class="fas fa-network-wired"></i> 3D Model Živčanog Sustava</h3>
+                <div class="model-container">
+                    <div class="human-nervous-system">
+                        <div class="nerve brain" data-part="brain"></div>
+                        <div class="nerve spinal-cord" data-part="spinal-cord"></div>
+                        <div class="nerve cranial-nerves" data-part="cranial"></div>
+                        <div class="nerve vagus-nerve" data-part="vagus"></div>
+                        
+                        <div class="nerve brachial-plexus-left" data-part="brachial-plexus"></div>
+                        <div class="nerve brachial-plexus-right" data-part="brachial-plexus"></div>
+                        <div class="nerve median-nerve-left" data-part="median-nerve"></div>
+                        <div class="nerve median-nerve-right" data-part="median-nerve"></div>
+                        
+                        <div class="nerve sciatic-nerve-left" data-part="sciatic-nerve"></div>
+                        <div class="nerve sciatic-nerve-right" data-part="sciatic-nerve"></div>
+                        <div class="nerve tibial-nerve-left" data-part="tibial-nerve"></div>
+                        <div class="nerve tibial-nerve-right" data-part="tibial-nerve"></div>
+                    </div>
+                </div>
+                <div class="model-controls">
+    <a href="index.html" class="model-btn" id="btnSkeletalView" style="text-decoration: none;">
+        <i class="fas fa-bone"></i> Kosturni sustav
+    </a>
+    <button class="model-btn" id="btnMuscularView"><i class="fas fa-dumbbell"></i> Mišićni sustav</button>
+    <button class="model-btn active" id="btnNervousView"><i class="fas fa-brain"></i> Živčani sustav</button>
+    <button class="model-btn" id="btnResetView"><i class="fas fa-redo"></i> Resetiraj prikaz</button>
+</div>
+            </section>
+
+            <section class="info-section">
+                <h3><i class="fas fa-info-circle"></i> Detaljne informacije</h3>
+                <div class="part-info">
+                    <div class="part-name">
+                        <h4 id="partTitle">Središnji živčani sustav</h4>
+                        <div class="latin-name" id="partLatin">Systema nervosum centrale</div>
+                    </div>
+                    <div class="part-description" id="partDescription">
+                        Središnji živčani sustav (SŽS) sastoji se od mozga i kralježnične moždine. On je glavno središte za obradu informacija u tijelu i upravlja svim voljnim i nevoljnim funkcijama, integrirajući signale iz cijelog organizma.
+                    </div>
+                    
+                    <div class="anatomy-details" id="anatomyDetails">
+                        <div class="detail-category">
+                            <h5><i class="fas fa-brain"></i> Glavne strukture</h5>
+                            <ul class="detail-list">
+                                <li>
+                                    <span class="detail-name">Veliki mozak</span>
+                                    <span class="detail-latin">Cerebrum</span>
+                                </li>
+                                <li>
+                                    <span class="detail-name">Mali mozak</span>
+                                    <span class="detail-latin">Cerebellum</span>
+                                </li>
+                                <li>
+                                    <span class="detail-name">Moždano deblo</span>
+                                    <span class="detail-latin">Truncus encephali</span>
+                                </li>
+                                <li>
+                                    <span class="detail-name">Kralježnična moždina</span>
+                                    <span class="detail-latin">Medulla spinalis</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+       <section class="menu-section">
+            <h3><i class="fas fa-list-alt"></i> Anatomski izbornik - živci i strukture</h3>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="sve">Sve regije</button>
+                <button class="filter-btn" data-filter="glava">Živci glave</button>
+                <button class="filter-btn" data-filter="ruke">Živci ruku</button>
+                <button class="filter-btn" data-filter="trup">Živci trupa</button>
+                <button class="filter-btn" data-filter="noge">Živci nogu</button>
+            </div>
+
+            <div class="anatomy-menu" id="anatomyMenu">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>O BodyLabu</h4>
+                    <p>Napredni interaktivni edukativni alat za detaljno proučavanje ljudske anatomije. Realistični 3D modeli s potpunim anatomskim detaljima za studente medicine i zdravstvene djelatnike.</p>
+                </div>
+               <div class="footer-section">
+    <h4>Sustavi tijela</h4>
+    <a href="index.html"><i class="fas fa-bone"></i> Kosturni sustav</a>
+    <a href="#"><i class="fas fa-dumbbell"></i> Mišićni sustav</a>
+    <a href="zivcani.html"><i class="fas fa-brain"></i> Živčani sustav</a>
+    <a href="#"><i class="fas fa-heart"></i> Krvožilni sustav</a>
+</div>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt i podrška</h4>
+                    <p><i class="fas fa-envelope"></i> bodylab@ss-adamic.com</p>
+                    <p><i class="fas fa-phone"></i> +385 98673437</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ul. Dolac, Rijeka</p>
+                    <p><i class="fas fa-book"></i> Pristup medicinskoj biblioteci</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 BodyLab. Sva prava pridržana. Obrazovni materijal za studij medicine.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="zivcani.js"></script>
+</body>
+</html>
