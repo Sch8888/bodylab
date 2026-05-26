@@ -1,0 +1,847 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo i {
+    font-size: 2.2rem;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-login {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: white;
+    color: #1a237e;
+}
+
+.btn-register {
+    background-color: #ff5722;
+    color: white;
+    border: 2px solid #ff5722;
+}
+
+.btn-register:hover {
+    background-color: #e64a19;
+    border-color: #e64a19;
+}
+
+/* Main content */
+main {
+    padding: 30px 0;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1a237e;
+}
+
+.page-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.page-title p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content layout */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* 3D Model section */
+.model-section {
+    flex: 1.2;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+}
+
+.model-section h3 {
+    color: #1a237e;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.model-container {
+    position: relative;
+    height: 650px;
+    background: linear-gradient(to bottom, #0c1a2d, #1a2b3c);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Realističniji kostur 3D */
+.human-skeleton {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg) rotateY(-5deg);
+}
+
+.bone {
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bone:hover {
+    filter: brightness(1.3);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.bone.selected {
+    background-color: #ffcc80;
+    filter: brightness(1.4);
+    transform: scale(1.05);
+    z-index: 20;
+    box-shadow: 0 0 15px rgba(255, 204, 128, 0.7);
+}
+
+/* Glava i lubanja */
+.skull { 
+    width: 90px; 
+    height: 100px; 
+    top: 10px; 
+    left: 105px; 
+    border-radius: 50% 50% 40% 40%; 
+    background: linear-gradient(to bottom, #e8e8e8, #d0d0d0);
+}
+
+.jaw { 
+    width: 60px; 
+    height: 25px; 
+    top: 105px; 
+    left: 120px; 
+    border-radius: 0 0 20px 20px;
+    background-color: #d8d8d8;
+}
+
+/* Kralježnica */
+.spine { 
+    width: 25px; 
+    height: 280px; 
+    top: 110px; 
+    left: 137.5px; 
+    background: linear-gradient(to bottom, #e0e0e0, #c8c8c8);
+    border-radius: 5px;
+}
+
+/* Prsni koš */
+.ribcage { 
+    width: 140px; 
+    height: 120px; 
+    top: 120px; 
+    left: 80px; 
+    border-radius: 20% 20% 30% 30%;
+    background: linear-gradient(to right, #e8e8e8, #d8d8d8);
+    clip-path: polygon(0% 20%, 15% 0%, 85% 0%, 100% 20%, 100% 80%, 85% 100%, 15% 100%, 0% 80%);
+}
+
+/* Zdjelica */
+.pelvis { 
+    width: 120px; 
+    height: 60px; 
+    top: 380px; 
+    left: 90px; 
+    border-radius: 40% 40% 10% 10%;
+    background: linear-gradient(to bottom, #d8d8d8, #c8c8c8);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+/* Ruke */
+.clavicle-left { 
+    width: 70px; 
+    height: 10px; 
+    top: 130px; 
+    left: 60px; 
+    transform: rotate(20deg);
+    border-radius: 5px;
+}
+
+.clavicle-right { 
+    width: 70px; 
+    height: 10px; 
+    top: 130px; 
+    left: 170px; 
+    transform: rotate(-20deg);
+    border-radius: 5px;
+}
+
+.humerus-left { 
+    width: 15px; 
+    height: 130px; 
+    top: 140px; 
+    left: 55px; 
+    transform: rotate(10deg);
+    border-radius: 5px;
+}
+
+.humerus-right { 
+    width: 15px; 
+    height: 130px; 
+    top: 140px; 
+    left: 230px; 
+    transform: rotate(-10deg);
+    border-radius: 5px;
+}
+
+.radius-ulna-left { 
+    width: 12px; 
+    height: 120px; 
+    top: 270px; 
+    left: 55px; 
+    transform: rotate(5deg);
+    border-radius: 4px;
+}
+
+.radius-ulna-right { 
+    width: 12px; 
+    height: 120px; 
+    top: 270px; 
+    left: 233px; 
+    transform: rotate(-5deg);
+    border-radius: 4px;
+}
+
+/* Noge */
+.femur-left { 
+    width: 20px; 
+    height: 160px; 
+    top: 440px; 
+    left: 100px; 
+    transform: rotate(5deg);
+    border-radius: 5px;
+}
+
+.femur-right { 
+    width: 20px; 
+    height: 160px; 
+    top: 440px; 
+    left: 180px; 
+    transform: rotate(-5deg);
+    border-radius: 5px;
+}
+
+.tibia-fibula-left { 
+    width: 15px; 
+    height: 150px; 
+    top: 600px; 
+    left: 100px; 
+    transform: rotate(2deg);
+    border-radius: 4px;
+}
+
+.tibia-fibula-right { 
+    width: 15px; 
+    height: 150px; 
+    top: 600px; 
+    left: 185px; 
+    transform: rotate(-2deg);
+    border-radius: 4px;
+}
+
+/* Šake i stopala */
+.hand-left { 
+    width: 30px; 
+    height: 40px; 
+    top: 390px; 
+    left: 30px; 
+    border-radius: 10px 10px 15px 15px;
+    background-color: #e0e0e0;
+}
+
+.hand-right { 
+    width: 30px; 
+    height: 40px; 
+    top: 390px; 
+    left: 240px; 
+    border-radius: 10px 10px 15px 15px;
+    background-color: #e0e0e0;
+}
+
+.foot-left { 
+    width: 40px; 
+    height: 25px; 
+    top: 750px; 
+    left: 90px; 
+    border-radius: 15px 15px 5px 5px;
+    background-color: #d8d8d8;
+}
+
+.foot-right { 
+    width: 40px; 
+    height: 25px; 
+    top: 750px; 
+    left: 170px; 
+    border-radius: 15px 15px 5px 5px;
+    background-color: #d8d8d8;
+}
+
+.model-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.model-btn {
+    padding: 10px 20px;
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.model-btn:hover {
+    background-color: #283593;
+    transform: translateY(-2px);
+}
+
+.model-btn.active {
+    background-color: #ff5722;
+}
+
+/* Info section */
+.info-section {
+    flex: 0.8;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.info-section h3 {
+    color: #1a237e;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.part-info {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid #1a237e;
+    margin-bottom: 30px;
+}
+
+.part-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.part-name h4 {
+    font-size: 1.8rem;
+    color: #1a237e;
+}
+
+.latin-name {
+    font-style: italic;
+    color: #666;
+    font-size: 1.3rem;
+    background-color: #e8eaf6;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.part-description {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.anatomy-details {
+    margin-top: 25px;
+}
+
+.detail-category {
+    margin-bottom: 20px;
+}
+
+.detail-category h5 {
+    color: #1a237e;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ddd;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-list {
+    list-style-type: none;
+}
+
+.detail-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-list li:last-child {
+    border-bottom: none;
+}
+
+.detail-name {
+    font-weight: 500;
+}
+
+.detail-latin {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Menu section */
+.menu-section {
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.menu-section h3 {
+    color: #1a237e;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.anatomy-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.menu-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid #1a237e;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item:hover {
+    background-color: #e8eaf6;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item.selected {
+    background-color: #e3f2fd;
+    border-left-color: #ff5722;
+}
+
+.menu-item h5 {
+    color: #1a237e;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.menu-item p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.menu-latin {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9rem;
+}
+/* =========================================
+   3D Model - Živčani Sustav
+   ========================================= */
+
+.human-nervous-system {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    transform-style: preserve-3d;
+    transform: rotateX(5deg) rotateY(-5deg); /* Blagi 3D nagib */
+}
+
+/* Osnovni stil za sve živce */
+.nerve {
+    position: absolute;
+    background: linear-gradient(to bottom, #82b1ff, #448aff);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(68, 138, 255, 0.6);
+}
+
+/* Hover efekt - kad se prođe mišem */
+.nerve:hover {
+    filter: brightness(1.3);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(130, 177, 255, 0.9);
+    z-index: 10;
+    background: linear-gradient(to bottom, #ffd54f, #ffb300); /* Požuti na hover */
+}
+
+/* Selektirano stanje */
+.nerve.selected {
+    background: linear-gradient(to bottom, #ffca28, #ff8f00);
+    box-shadow: 0 0 20px rgba(255, 143, 0, 0.8);
+    transform: scale(1.1);
+    z-index: 20;
+}
+
+/* --- Specifične strukture živčanog sustava --- */
+
+/* Mozak (Brain) */
+.brain {
+    width: 70px;
+    height: 80px;
+    top: 20px;
+    left: 115px;
+    border-radius: 40% 40% 30% 30%;
+    background: linear-gradient(135deg, #8c9eff, #536dfe);
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.2), 0 0 15px rgba(83, 109, 254, 0.6);
+}
+
+/* Kralježnična moždina (Spinal Cord) */
+.spinal-cord {
+    width: 10px;
+    height: 270px;
+    top: 95px;
+    left: 145px;
+    background: linear-gradient(to right, #82b1ff, #e3f2fd, #82b1ff);
+    box-shadow: 0 0 10px rgba(130, 177, 255, 0.8);
+}
+
+/* Moždani živci (Cranial nerves - aproksimacija) */
+.cranial-nerves {
+    width: 40px;
+    height: 15px;
+    top: 95px;
+    left: 130px;
+    border-radius: 5px;
+}
+
+/* Lutajući živac (Vagus nerve) */
+.vagus-nerve {
+    width: 4px;
+    height: 130px;
+    top: 100px;
+    left: 135px;
+    transform: rotate(8deg);
+    border-radius: 50% 20% 0 0;
+}
+
+/* Ruke - Brahijalni pleksus */
+.brachial-plexus-left {
+    width: 50px;
+    height: 8px;
+    top: 130px;
+    left: 100px;
+    transform: rotate(25deg);
+}
+
+.brachial-plexus-right {
+    width: 50px;
+    height: 8px;
+    top: 130px;
+    left: 150px;
+    transform: rotate(-25deg);
+}
+
+/* Ruke - Medijani živac */
+.median-nerve-left {
+    width: 4px;
+    height: 160px;
+    top: 155px;
+    left: 70px;
+    transform: rotate(15deg);
+}
+
+.median-nerve-right {
+    width: 4px;
+    height: 160px;
+    top: 155px;
+    left: 226px;
+    transform: rotate(-15deg);
+}
+
+/* Noge - Bedreni živac (Sciatic nerve) */
+.sciatic-nerve-left {
+    width: 7px;
+    height: 180px;
+    top: 360px;
+    left: 115px;
+    transform: rotate(8deg);
+}
+
+.sciatic-nerve-right {
+    width: 7px;
+    height: 180px;
+    top: 360px;
+    left: 178px;
+    transform: rotate(-8deg);
+}
+
+/* Noge - Tibijalni živac */
+.tibial-nerve-left {
+    width: 4px;
+    height: 150px;
+    top: 535px;
+    left: 90px;
+    transform: rotate(5deg);
+}
+
+.tibial-nerve-right {
+    width: 4px;
+    height: 150px;
+    top: 535px;
+    left: 206px;
+    transform: rotate(-5deg);
+}
+
+/* Footer */
+footer {
+    background-color: #1a237e;
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #ffcc80;
+}
+
+.footer-section p, .footer-section a {
+    color: #e0e0e0;
+    margin-bottom: 12px;
+    display: block;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #b0bec5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .model-container {
+        height: 550px;
+    }
+    
+    .human-skeleton {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .model-container {
+        height: 500px;
+    }
+    
+    .human-skeleton {
+        transform: scale(0.8) rotateX(10deg) rotateY(-5deg);
+    }
+    
+    .page-title h2 {
+        font-size: 2rem;
+    }
+    
+    .anatomy-menu {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Scrollbar styling */
+.info-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.info-section::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.info-section::-webkit-scrollbar-thumb {
+    background: #c5cae9;
+    border-radius: 10px;
+}
+
+.info-section::-webkit-scrollbar-thumb:hover {
+    background: #7986cb;
+}
+/* =========================================
+   Gumbi za filtriranje (Anatomski izbornik)
+   ========================================= */
+.filter-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Omogućuje gumbima da se prebace u novi red na mobitelima */
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    background-color: #f8f9fa;
+    border: 2px solid #1a237e;
+    color: #1a237e;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+/* Hover efekt i izgled kada je gumb aktivan/kliknut */
+.filter-btn:hover, .filter-btn.active {
+    background-color: #1a237e;
+    color: white;
+    box-shadow: 0 4px 10px rgba(26, 35, 126, 0.2);
+}
